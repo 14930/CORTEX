@@ -37,7 +37,7 @@ class KukaCableGymEnv:
         self.cable_segments = []
         for i in range(self.num_segments):
             shape = p.createCollisionShape(p.GEOM_SPHERE, radius=self.radius)
-            visual = p.createVisualShape(p.GEOM_SPHERE, radius=self.radius, rgbaColor=[1, 0.4, 0, 1])
+            visual = p.createVisualShape(p.GEOM_SPHERE, radius=self.radius,rgbaColor=[ 0,1, 0, 1])
             body = p.createMultiBody(
                 baseMass=0.008, baseCollisionShapeIndex=shape, baseVisualShapeIndex=visual,
                 basePosition=[ee_pos[0], ee_pos[1], ee_pos[2] - i * segment_gap]
