@@ -51,12 +51,12 @@ with open(csv_filename, mode='w', newline='') as csv_file:
         # Get 3D positions
         cable_points_3d = depth_to_3d(depth, seg, env.cable_segments)
 
-        # ── معالجة البيانات وتحديثها لكل إطار زمنياً داخل الـ Loop ──
+        # ── Data processing and updating per frame temporally inside the Loop ──
         if len(cable_points_3d) > 0:
             pcd = create_point_cloud(cable_points_3d)
             print(f"Step {step} | Cable points detected: {len(cable_points_3d)}")
             
-            # استخراج النقطة الأخيرة [1-] والتي تمثل طرف الكابل الحُر
+            # Extracting the last point [-1] which represents the free cable tip
             cable_tip = cable_points_3d[-1]          
             enhanced_obs = np.append(obs, cable_tip) 
         else:
@@ -64,10 +64,10 @@ with open(csv_filename, mode='w', newline='') as csv_file:
             cable_tip = np.zeros(3)
             enhanced_obs = np.append(obs, cable_tip)
 
-        # طباعة المخرجات في الـ Terminal لمتابعة الحركة لحظة بلحظة
+        # Print outputs in the Terminal to monitor movement moment by moment
         print(f"Step {step} | Cable Tip: {cable_tip} | Obs size: {len(enhanced_obs)}")
 
-        # كتابة البيانات الحالية الخاصة بهذا الإطار فوراً في ملف الـ CSV
+        # Write the current data for this frame immediately to the CSV file
         csv_writer.writerow([step, cable_tip[0], cable_tip[1], cable_tip[2], len(enhanced_obs)])
 
         # Random action (Member 3 will replace with RL agent later)
