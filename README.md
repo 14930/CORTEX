@@ -22,10 +22,6 @@ Manipulating deformable objects like cables is an open challenge in robotics. CO
 ### 📡 Real-Time Cable Vision & Tracking
 Using PyBullet's synthetic camera matrices, CORTEX extracts real-time depth and segmentation data. The vision module (`detectigCable.py`) reconstructs this into a 3D Point Cloud using **Open3D** and tracks the exact 3D coordinates of the cable tip.
 
-<p align="center">
-  <img src="kuka_tracking_demo.png" alt="KUKA PyBullet Simulation and Computer Vision Tracking" width="850">
-</p>
-
 ### 🦾 PyBullet Physics & Deformables
 The cable is modeled using interconnected dynamic rigid bodies with tuned stiffness constraints and multi-body dynamics, simulating real-world sag and momentum.
 
